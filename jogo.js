@@ -8,3 +8,4 @@ function ajustaTamanhoPalcoJogo(){
     var largura = window.innerWidth
     console.log(altura, largura)
 }
+
