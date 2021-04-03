@@ -26,6 +26,7 @@ function posiçõesAleatorias() {
     mosca.style.left = posiçãoX + "px"
     mosca.style.top = posiçãoY + "px"
     mosca.style.position = "absolute"
+    mosca.style.transform = `scaleX(${ladoAleatorio()})`
 
     document.body.appendChild(mosca)
 }
@@ -40,5 +41,16 @@ function tamanhoAleatorio() {
             return 'mosca2'
         case 2:
             return 'mosca3'
+    }
+}
+
+function ladoAleatorio() {
+    var lado = parseInt(Math.random() * 2)
+
+    switch(lado) {
+        case 0:
+            return -1
+        case 1:
+            return 1
     }
 }
