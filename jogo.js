@@ -1,10 +1,35 @@
 var altura = 0
 var largura = 0
 var coraçõesVazios = 0
+var pontos = 0
+var dificuldade = () => {
+    let nivel = parseInt(prompt(`Digite o nivel do jogo!
+    1 - Fácil
+    2 - Médio
+    3 - Dificil
+    4 - Eita Porra
+    5 - Everson Zóio`))
+
+    console.log(nivel)
+
+    switch(nivel){
+        case 1:
+            return 3000
+        case 2:
+            return 2000
+        case 3:
+            return 1500
+        case 4:
+            return 1000
+        case 5:
+            return 500
+    }
+
+}
 
 ajustaTamanhoPalcoJogo()
 
-time("posiçõesAleatorias()", 2000)
+time("posiçõesAleatorias()", dificuldade())
 
 function time(evento, tempo = 2000) {
     setInterval(() => {
@@ -26,10 +51,12 @@ function posiçõesAleatorias() {
 
         coraçõesVazios++
 
-        if (coraçõesVazios <= 3) {
-            document.getElementById(`v${coraçõesVazios}`).src = "Img/coracao_vazio.png"
+        if (coraçõesVazios == 3) {
+            document.getElementById(`v3`).src = "Img/coracao_vazio.png"
+            alert(`Game Over - pontos: ${pontos}`)
+            location.reload(true)
         }else {
-            alert("Perdeu")
+            document.getElementById(`v${coraçõesVazios}`).src = "Img/coracao_vazio.png"
         }
 
     }
@@ -53,6 +80,7 @@ function posiçõesAleatorias() {
     mosca.id = 'mosca'
     mosca.onclick = () => {
         mosca.remove()
+        pontos++
     }
 
     document.body.appendChild(mosca)
