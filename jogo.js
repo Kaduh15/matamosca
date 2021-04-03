@@ -1,13 +1,17 @@
 var altura = 0
 var largura = 0
+var coraçõesVazios = 0
 
 ajustaTamanhoPalcoJogo()
 
-setInterval(() => {
-    posiçõesAleatorias()
-}, 1000)
+time("posiçõesAleatorias()", 2000)
 
-posiçõesAleatorias()
+function time(evento, tempo = 2000) {
+    setInterval(() => {
+        eval(evento)
+    }, tempo)
+}
+
 
 function ajustaTamanhoPalcoJogo() {
     altura = window.innerHeight
@@ -19,6 +23,15 @@ function posiçõesAleatorias() {
 
     if (document.getElementById('mosca')) {
         document.getElementById('mosca').remove()
+
+        coraçõesVazios++
+
+        if (coraçõesVazios <= 3) {
+            document.getElementById(`v${coraçõesVazios}`).src = "Img/coracao_vazio.png"
+        }else {
+            alert("Perdeu")
+        }
+
     }
 
 
@@ -38,6 +51,9 @@ function posiçõesAleatorias() {
     mosca.style.position = "absolute"
     mosca.style.transform = `scaleX(${ladoAleatorio()})`
     mosca.id = 'mosca'
+    mosca.onclick = () => {
+        mosca.remove()
+    }
 
     document.body.appendChild(mosca)
 }
@@ -45,7 +61,7 @@ function posiçõesAleatorias() {
 function tamanhoAleatorio() {
     var classe = parseInt(Math.random() * 3)
 
-    switch(classe) {
+    switch (classe) {
         case 0:
             return 'mosca1'
         case 1:
@@ -58,7 +74,7 @@ function tamanhoAleatorio() {
 function ladoAleatorio() {
     var lado = parseInt(Math.random() * 2)
 
-    switch(lado) {
+    switch (lado) {
         case 0:
             return -1
         case 1:
