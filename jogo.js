@@ -3,6 +3,10 @@ var largura = 0
 
 ajustaTamanhoPalcoJogo()
 
+setInterval(() => {
+    posiçõesAleatorias()
+}, 1000)
+
 posiçõesAleatorias()
 
 function ajustaTamanhoPalcoJogo() {
@@ -12,6 +16,12 @@ function ajustaTamanhoPalcoJogo() {
 }
 
 function posiçõesAleatorias() {
+
+    if (document.getElementById('mosca')) {
+        document.getElementById('mosca').remove()
+    }
+
+
     var posiçãoX = parseInt(Math.random() * largura) - 90
     var posiçãoY = parseInt(Math.random() * altura) - 90
 
@@ -27,6 +37,7 @@ function posiçõesAleatorias() {
     mosca.style.top = posiçãoY + "px"
     mosca.style.position = "absolute"
     mosca.style.transform = `scaleX(${ladoAleatorio()})`
+    mosca.id = 'mosca'
 
     document.body.appendChild(mosca)
 }
