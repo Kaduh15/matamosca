@@ -1,9 +1,16 @@
 var altura = 0
 var largura = 0
 var coraçõesVazios = 0
-var pontos = 0
+var tempo = 30
+
 
 ajustaTamanhoPalcoJogo()
+
+var cronometro = setInterval(() => {
+
+    document.getElementById('cronometro').innerHTML = tempo--
+
+}, 1000)
 
 time("posiçõesAleatorias()", 2000)
 
