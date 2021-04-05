@@ -1,15 +1,21 @@
 var altura = 0
 var largura = 0
 var coraçõesVazios = 0
-var tempo = 30
+var tempo = 10
 
+document.getElementById('cronometro').innerHTML = tempo
 
 ajustaTamanhoPalcoJogo()
+
+posiçõesAleatorias()
 
 var cronometro = setInterval(() => {
 
     document.getElementById('cronometro').innerHTML = tempo--
 
+    if (tempo <= 0 && coraçõesVazios < 3) {
+        window.location.href = "vitoria.html"
+    }
 }, 1000)
 
 time("posiçõesAleatorias()", 2000)
@@ -33,12 +39,12 @@ function posiçõesAleatorias() {
         document.getElementById('mosca').remove()
 
         coraçõesVazios++
-        
+
         if (coraçõesVazios > 3) {
-            
+
             window.location.href = "fim_de_jogo.html"
-            
-        }else {
+
+        } else {
             document.getElementById(`v${coraçõesVazios}`).src = "Img/coracao_vazio.png"
 
         }
