@@ -18,11 +18,11 @@ var cronometro = setInterval(() => {
     }
 }, 1000)
 
-time("posiçõesAleatorias()", 2000)
+time(posiçõesAleatorias, 2000)
 
 function time(evento, tempo = 2000) {
     setInterval(() => {
-        eval(evento)
+        eval(evento())
     }, tempo)
 }
 
